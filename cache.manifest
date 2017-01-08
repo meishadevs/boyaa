@@ -1,0 +1,46 @@
+CACHE MANIFEST
+# version 1.0.1
+
+CACHE:
+  index.html
+  css/base.css
+  css/index.css
+  js/animate.js
+  js/index.js
+  js/jquery-1.11.1.min.js
+  js/util.js
+  images/arrow.png
+  images/arrow_hover.png
+  images/banner1.jpg
+  images/banner2.jpg
+  images/banner3.jpg
+  images/banner4.jpg
+  images/banner5.jpg
+  images/byhrbg3.jpg
+  images/bynewsbg.jpg
+  images/dian1.png
+  images/dian2.png
+  images/govIcon.gif
+  images/indexmainbg.jpg
+  images/jrwm.png
+  images/logo.png
+  images/more.png
+  images/more2.png
+  images/product1.jpg
+  images/product10.jpg
+  images/product11.jpg
+  images/product12.jpg
+  images/product2.jpg
+  images/product3.jpg
+  images/product4.jpg
+  images/product5.jpg
+  images/product6.jpg
+  images/product7.jpg
+  images/product8.jpg
+  images/product9.jpg
+  images/sanjiaoxing.png
+  images/top.png
+  images/zczp.png
+
+NETWORK:
+  *

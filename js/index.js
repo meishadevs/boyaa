@@ -1,123 +1,127 @@
-window.onload = function()
-{
-    //处理顶部的导航栏
+//jQuery的入口函数
+$(document).ready(function () {
+
+    //设置顶部导航栏
     setNav();
 
-    //处理banner
+    //设置大banner
     setBanner();
+
+    //回到顶部
+    gotoTop();
 
     //处理轮播图上的逻辑
     setSlider();
 
-    //处理回到顶部的逻辑
-    gotoTop();
-}
+    ////改变头部导航栏
+    //changeTopNav();
+});
 
-//处理顶部导航栏上的逻辑
+//设置顶部导航栏
 function setNav()
 {
     //获得顶部导航栏下的所有a标签
-    var navAs = $("nav").getElementsByTagName("a");
+    var navAs = $("#nav a");
 
-    //遍历顶部导航栏下的a标签
-    for(var i = 0; i < navAs.length; i++)
-    {
-        //为每个a标签添加一个鼠标点击事件
-        navAs[i].onmousedown = function()
-        {
-            //清空所有的类
-            clearClassName(navAs);
+    //获得并不导航栏中所有的a标签
+    //给a标签添加一个点击事件
+    $("#nav a").on("click", function () {
 
-            //设置当前选中
-            this.className = "current";
-        }
-    }
+        //清空a标签上所有的current类
+        $("#nav a").removeClass("current");
+
+        //给当前点击的a标签添加一个current类
+        $(this).addClass("current");
+    });
 }
 
 function setBanner()
 {
     //获得slider下的li标签
-    var sliderLis = $("slider").getElementsByTagName("li");
-    var circle = $("circle");
+    var sliderLis = $("#slider li");
 
     //轮播图中图片的下标
     var thatIndex = 0;
     var timer = null;
 
-    //设置li的背景图片和样式
-    for(var i = 0; i < sliderLis.length; i++)
-    {
-        sliderLis[i].style.background = "url(images/banner" + (i + 1) + ".jpg)";
-        sliderLis[i].style.backgroundRepeat = "no-repeat";
-        sliderLis[i].style.backgroundPosition = "top center";
-        sliderLis[i].className = "hide";
-    }
+    //遍历li标签,并且为li标签设置背景图片和css样式
+    //sliderLis数组中存放了所有的li标签
+    //index：数组的下标
+    //ele：li标签(ele是一个dom对象，使用jQuery之前需要先转换为jQuery对象)
+    $.each(sliderLis, function (index, ele) {
+        $(ele).css({
+            "background" : "url(images/banner" + (index + 1) + ".jpg)",
+            "background-repeat" : "no-repeat",
+            "background-position" : "top center",
+        });
 
-    //显示第一张轮播图
-    sliderLis[0].className = "show";
+        //隐藏li标签
+        $(ele).hide();
+    });
 
-    //创建轮播图上的小圆点
-    var ol = document.createElement("ol");
-    circle.appendChild(ol);
-    for(var i = 0; i < sliderLis.length; i++)
-    {
-        var li = document.createElement("li");
-        li.innerHTML = i;
-        ol.appendChild(li);
-    }
+    //显示第一个li标签
+    sliderLis.eq(0).show();
 
-    //获得所有的小圆点
-    var arrayCircle = circle.getElementsByTagName("li");
+    //创建ol标签
+    var $ol = $("<ol></ol>");
+
+    //将ol标签添加到id为circle的div标签上
+    $("#circle").append($ol);
+
+    //遍历轮播图上的li标签
+    $.each(sliderLis, function (index, ele) {
+
+        //创建li标签
+        var $li = $("<li></li>");
+
+        //设置li标签中的文本
+        $li.text(index);
+
+        //将li标签添加到ol标签上
+        $ol.append($li);
+    });
 
     //选中第1个小圆点
-    arrayCircle[0].className = "on";
+    $("#circle li").eq(0).addClass("on");
 
-    //遍历小圆点
-    for(var i = 0; i < arrayCircle.length; i++)
-    {
-        arrayCircle[i].index = i;
+    //给小圆点添加一个点击事件
+    $("#circle li").on("click", function () {
 
-        //给每个小圆点添加一个点击事件
-        arrayCircle[i].onclick = function()
+        //只有当前用户点击的小圆点的下标与正在播放的轮播图的下标不同时，才播放当前与用户点击的小圆点对应的轮播图
+        if($(this).index() != thatIndex)
         {
-            //只有当前用户点击的小圆点的下标与正在播放的轮播图的下标不同时，才播放当前与用户点击的小圆点对应的轮播图
-            if(this.index != thatIndex)
-            {
-                //获得当前点击的小圆点的下标
-                //并且将下标转换成轮播图中图片的下标
-                thatIndex = parseInt(this.innerHTML);
+            //获得当前点击的小圆点的下标
+            //并且将下标转换成轮播图中图片的下标
+            thatIndex = parseInt($(this).text());
 
-                //选中小圆点
-                clearClassName(arrayCircle);
-                this.className = "on";
+            //选中小圆点
+            $("#circle li").removeClass("on");
+            $(this).addClass("on");
 
-                //播放轮播图
-                setArrayClass(sliderLis, "hide");
-                sliderLis[thatIndex].className = "show";
-                sliderLis[thatIndex].style.opacity = 0;
-                animate(sliderLis[thatIndex], {opacity: 100}, 40);
-            }
+            //播放轮播图
+            sliderLis.hide();
+            sliderLis.eq(thatIndex).show();
+            sliderLis.eq(thatIndex).css("opacity", "0");
+            animate(sliderLis[thatIndex], {opacity: 100}, 40);
         }
-    }
+    });
 
     //创建定时器,用于实现图片的自动轮播
     timer = setInterval(autoPlaySlider, 3000);
 
     //鼠标放在banner上
-    $("banner").onmouseover = function()
-    {
+    $("#banner").mouseleave(function () {
         //关闭定时器
         clearInterval(timer);
-    }
+    });
 
     //鼠标离开banner
-    $("banner").onmouseout = function()
-    {
+    $("#banner").mouseleave(function () {
         clearInterval(timer);
 
         //创建定时器,用于实现图片的自动轮播
         timer = setInterval(autoPlaySlider, 3000);
-    }
+    });
 
     //图片自动轮播
     function autoPlaySlider()
@@ -127,152 +131,18 @@ function setBanner()
         thatIndex = ++thatIndex > sliderLis.length - 1 ? 0 : thatIndex;
 
         //选中小圆点
-        clearClassName(arrayCircle);
-        arrayCircle[thatIndex].className = "on";
+        $("#circle li").removeClass("on");
+        $("#circle li").eq(thatIndex).addClass("on");
 
         //图片轮播
-        setArrayClass(sliderLis, "hide");
-        sliderLis[thatIndex].className = "show";
-        sliderLis[thatIndex].style.opacity = 0;
-        animate(sliderLis[thatIndex], {opacity : 100}, 60);
+        sliderLis.hide();
+        sliderLis.eq(thatIndex).show();
+        sliderLis.eq(thatIndex).css("opacity", "0");
+        animate(sliderLis[thatIndex], {opacity: 100}, 60);
     }
 }
 
-//处理 轮播图上的逻辑
-function setSlider()
-{
-    var w_slider = $("w_slider");
-
-    //获得承载轮播图的盒子
-    var slider_main = $("slider_main");
-
-    //获得所有产品
-    var arrayProduct = Util.getByClass("slider-main-product");
-
-    //获得所有小圆点
-    var arrayCircle = $("slider_ctrl").getElementsByTagName("li");
-
-    //标记当前的索引
-    var thatIndex = 0;
-
-    //获得最大的盒子的宽度
-    var scrollWidth = w_slider.offsetWidth;
-
-    //获得需要轮播的轮播图
-    var arraySlider = Util.getByClass("slider-main-img");
-
-    //当前轮播图的索引
-    var iNow = 0;
-
-    //遍历产品
-    for(var i = 0; i < arrayProduct.length; i++)
-    {
-        //当鼠标放在产品上
-        arrayProduct[i].onmouseover = function()
-        {
-            var h5 = this.getElementsByTagName("h5")[0];
-            var span = this.getElementsByTagName("span")[0];
-            h5.style.color = "#fff";
-            span.style.color = "#fff";
-            span.style.background = "url(images/arrow_hover.png) no-repeat center right";
-        }
-
-        //当鼠标离开产品
-        arrayProduct[i].onmouseout = function()
-        {
-            var h5 = this.getElementsByTagName("h5")[0];
-            var span = this.getElementsByTagName("span")[0];
-            h5.style.color = "#444866";
-            span.style.color = "#38B774";
-            span.style.background = "url(images/arrow.png) no-repeat center right";
-        }
-    }
-
-    //将第1张到第4张轮播图移动到最右边
-    for(var i = 1; i < arraySlider.length; i++)
-    {
-        arraySlider[i].style.left = scrollWidth + "px";
-    }
-
-    //遍历小圆点
-    for(var i = 0; i < arrayCircle.length; i++)
-    {
-        //给小圆点添加一个点击事件
-        arrayCircle[i].onclick = function()
-        {
-            //获得小圆点上的数字
-            thatIndex = parseInt(this.innerHTML);
-
-            //轮播图向左轮播
-            if(thatIndex > iNow)
-            {
-                //将当前正在展示的图片慢慢的移到左侧
-                animate(arraySlider[iNow], {left : -scrollWidth}, 30);
-
-                //将当前需要展示的图片快速的移到到右侧
-                arraySlider[thatIndex].style.left = scrollWidth + "px";
-            }
-            //轮播图向右播放
-            else if(thatIndex < iNow)
-            {
-                //将当前正在展示的图片慢慢的移到右侧
-                animate(arraySlider[iNow], {left : scrollWidth}, 30);
-
-                //将当前需要展示的图片快速移到左侧
-                arraySlider[thatIndex].style.left = -scrollWidth + "px";
-            }
-
-            iNow = thatIndex;
-
-            //将当前需要展示的图片慢慢的移到舞台中央
-            animate(arraySlider[thatIndex], {left : 0}, 30);
-
-            //选中小圆点
-            setCircle(arrayCircle, thatIndex);
-        }
-    }
-
-    var timer = null;
-
-    //创建定时器,用于自动播放轮播图
-    timer = setInterval(autoPlay, 4000);
-
-    //当鼠标放在轮播图上
-    w_slider.onmouseover = function()
-    {
-        //清除定时器
-        clearInterval(timer);
-    }
-
-    //当鼠标离开轮播图
-    w_slider.onmouseout = function()
-    {
-        clearInterval(timer);
-
-        //创建定时器,用于自动播放轮播图
-        timer = setInterval(autoPlay, 4000);
-    }
-
-    //自动播放轮播图
-    function autoPlay()
-    {
-        //当前的图片慢慢的移动到-scrollWidth的位置上
-        animate(arraySlider[iNow], {left : -scrollWidth}, 30);
-
-        //获得下一张图片的索引
-        iNow = ++iNow > arraySlider.length - 1 ? 0 : iNow;
-
-        //先将需要移动的图片放在舞台的右边
-        arraySlider[iNow].style.left = scrollWidth + "px";
-
-        //下一张图片走到舞台中央
-        animate(arraySlider[iNow], {left : 0}, 30);
-
-        //选中小圆点
-        setCircle(arrayCircle, iNow);
-    }
-}
-
+//回到顶部
 function gotoTop()
 {
     var goTop = $("goTop");
@@ -281,18 +151,21 @@ function gotoTop()
     var target = 0;
     var timer = null;
 
-    //监听是否滑动了浏览器的滑块
-    window.onscroll = function()
-    {
-        //如果滑动了浏览器的滑块,显示回到顶部按钮
-        Util.scroll().top > 0 ? goTop.style.display = "block" : goTop.style.display = "none";
+    //监听浏览器滑动
+    $(window).scroll(function () {
 
-        //把卷进去的头部给起始位置
-        leader = Util.scroll().top;
-    }
+        //如果滑动了浏览器的滑块，显示回到顶部按钮
+        $(document).scrollTop() > 0 ? $("#goTop").show() : $("#goTop").hide();
 
-    goTop.onclick = function()
-    {
+        //把滑块滑动的距离给起始位置
+        leader = $(document).scrollTop();
+    });
+
+    //个回到顶部按钮添加一个点击事件
+    $("#goTop").on("click", function () {
+
+        clearInterval(timer);
+
         target = 0;
 
         timer = setInterval(function()
@@ -307,48 +180,204 @@ function gotoTop()
                 clearInterval(timer);
             }
         }, 10);
+    });
+}
+
+//处理 轮播图上的逻辑
+function setSlider()
+{
+    var w_slider = $("#w_slider");
+
+    //获得承载轮播图的盒子
+    var slider_main = $("#slider_main");
+
+    //获得所有产品
+    var arrayProduct = $(".slider-main-product");
+
+    //获得所有小圆点
+    var arrayCircle = $("#slider_ctrl li");
+
+    //标记当前的索引
+    var thatIndex = 0;
+
+    //获得最大的盒子的宽度
+    var scrollWidth = w_slider.width();
+
+    //获得需要轮播的轮播图
+    var arraySlider = $(".slider-main-img");
+
+    //当前轮播图的索引
+    var iNow = 0;
+
+    //当鼠标放在产品上
+    arrayProduct.on("mouseenter", function () {
+
+        //修改产品名称的颜色
+        var h5 = this.getElementsByTagName("h5")[0];
+        var span = this.getElementsByTagName("span")[0];
+        $(h5).css("color", "#fff");
+        $(span).css({
+            "color" : "#fff",
+            "background" : "url(images/arrow_hover.png)",
+            "background-repeat" : "no-repeat",
+            "background-position" : "center right"
+        });
+    });
+
+    //当鼠标离开产品
+    arrayProduct.on("mouseleave", function () {
+
+        //修改产品名称的颜色
+        var h5 = this.getElementsByTagName("h5")[0];
+        var span = this.getElementsByTagName("span")[0];
+        $(h5).css("color", "#444866");
+        $(span).css({
+            "color" : "#38B774",
+            "background" : "url(images/arrow.png)",
+            "background-repeat" : "no-repeat",
+            "background-position" : "center right"
+        });
+    });
+
+    //将第1张到第4张轮播图移动到最右边
+    for(var i = 1; i < arraySlider.length; i++)
+    {
+        arraySlider.eq(i).css("left", scrollWidth);
+    }
+
+    //给小圆点添加一个点击监听
+    arrayCircle.on("click", function () {
+
+        //获得小圆点上的数字
+        thatIndex = parseInt(this.innerHTML);
+
+        //轮播图向左轮播
+        if(thatIndex > iNow)
+        {
+            //将当前正在展示的图片慢慢的移到左侧
+            arraySlider.eq(iNow).animate({left : -scrollWidth - 1});
+
+            //将当前需要展示的图片快速的移到到右侧
+            arraySlider.eq(thatIndex).css("left", scrollWidth);
+        }
+        //轮播图向右播放
+        else if(thatIndex < iNow)
+        {
+            //将当前正在展示的图片慢慢的移到右侧
+            arraySlider.eq(iNow).animate({left : scrollWidth});
+
+            //将当前需要展示的图片快速移到左侧
+            arraySlider.eq(thatIndex).css("left", -scrollWidth);
+        }
+
+        iNow = thatIndex;
+
+        //将当前需要展示的图片慢慢的移到舞台中央
+        arraySlider.eq(thatIndex).animate({left : 0});
+
+        //选中小圆点
+        setCircle(arrayCircle, thatIndex);
+    });
+
+
+    var timer = null;
+
+    //创建定时器,用于自动播放轮播图
+    timer = setInterval(autoPlay, 4000);
+
+    //当鼠标放在轮播图上
+    w_slider.on("mouseenter", function () {
+
+        //清除定时器
+        clearInterval(timer);
+    });
+
+    //当鼠标离开轮播图
+    w_slider.on("mouseleave", function () {
+
+        clearInterval(timer);
+
+        //创建定时器,用于自动播放轮播图
+        timer = setInterval(autoPlay, 4000);
+    });
+
+    //自动播放轮播图
+    function autoPlay()
+    {
+        //将当前展示在舞台中央的轮播图慢慢的移动到最左侧
+        arraySlider.eq(iNow).animate({left : -scrollWidth - 1});
+
+        //获得下一个轮播图的索引
+        iNow = ++iNow > arraySlider.length - 1 ? 0 : iNow;
+
+        //将下一个轮播图放在舞台的右侧(因为轮播图自动播放的方向是向左)
+        arraySlider[iNow].style.left = scrollWidth + "px";
+
+
+        //将下一个轮播图慢慢的移动到舞台中央
+        arraySlider.eq(iNow).animate({left : 0});
+
+        //选中小圆点
+        setCircle(arrayCircle, iNow);
     }
 }
+
+//改变顶部导航栏
+function changeTopNav()
+{
+    //记录滑动滑块之前的位置
+    var start = 0;
+
+    //记录滑动滑块之后的位置
+    var end = 0;
+
+    //监听滑块滑动
+    $(document).scroll(function () {
+
+        //获得滑块滑动的距离
+        end = $(window).scrollTop();
+        console.log("end = " + end);
+
+        //滑块向下滑动了
+        if(end > start)
+        {
+            //获得头部导航栏的高度
+            var navTop = $(".header").height();
+
+            //如果滑块向下滑动的距离超过了顶部导航栏的高度,就隐藏顶部导航栏
+            if(end > navTop)
+            {
+                //使用淡出效果隐藏导航栏
+                $(".header").fadeOut(1000);
+            }
+        }
+        //滑块向上滑动了
+        else if(end <= 0)
+        {
+            $(".header").css("display", "block");
+
+            //使用淡入效果显示导航栏
+            $(".header").fadeIn();
+        }
+
+        start = end;
+    });
+}
+
 
 /**
- * 选中了小圆点
- * @param array 保存小圆点的数组
- * @param index 选中的小圆点的下标
- */
-function setCircle(array, index)
-{
-    clearClassName(array);
+* 选中了小圆点
+* @param array 保存小圆点的数组
+* @param index 选中的小圆点的下标
+*/
+function setCircle(array, index) {
 
-    if(index == 3)
-    {
-        array[index].className = "last on";
-    }
-    else
-    {
-        array[index].className = "on";
-        array[3].className = "last";
-    }
-}
+    //清除小圆点上所有的类
+    array.removeClass();
 
-//清除类名
-function clearClassName(array)
-{
-    for(var i = 0; i < array.length; i++)
-    {
-        array[i].className = "";
-    }
-}
+    //给最后一个小圆点添加一个"last"类
+    array.eq(array.length - 1).addClass("last");
 
-//设置类
-function setArrayClass(array, className)
-{
-    for(var i = 0; i < array.length; i++)
-    {
-        array[i].className = className;
-    }
-}
-
-function $(id)
-{
-    return document.getElementById(id);
+    //给当前选中的小圆点添加"on"类，其他小圆点移除"on"类
+    array.eq(index).addClass("on").siblings().removeClass("on");
 }
