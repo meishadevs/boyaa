@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+/* 轮播图 s */
+.banner {
+  margin: 58px 0 50px 0;
+  position: relative;
+
+  .slider {
+    ul {
+      background-color: black;
+
+      li {
+        width: 100%;
+        height: 465px;
+      }
+    }
+
+    a {
+      width: 100%;
+      height: 465px;
+      display: inline-block;
+    }
+  }
+
+  .circle {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    margin-left: -67px;
+
+    li {
+      width: 12px;
+      height: 12px;
+      margin-right: 15px;
+      background-color: #B5C0CB;
+      border-radius: 50%;
+      text-indent: -10em;
+      overflow: hidden;
+      float: left;
+      cursor: pointer;
+
+      &.on {
+        background-color: #2FBC71;
+      }
+    }
+  }
+}
+/* 轮播图 e */

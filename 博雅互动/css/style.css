@@ -1,0 +1,392 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+body{
+    font-family: "Microsoft YaHei", "SimSun";
+}
+
+/*内容居中*/
+.inner_c{
+    width: 1000px;
+    margin: 0 auto;
+}
+
+/*使用隔墙法清除浮动*/
+.cl{
+    clear: both;
+}
+
+/*头部*/
+.header{
+    height: 58px;
+    background-color: #191D3A;
+}
+
+/*logo*/
+.header .inner_c .logo{
+    float: left;
+    height: 58px;
+    margin-right: 40px;
+}
+
+.header .inner_c .nav ul{
+    list-style: none;
+}
+
+.header .inner_c .nav ul li{
+    float: left;
+    width: 100px;
+    line-height: 58px;
+    text-align: center;
+    border-left: solid 1px #252947;
+}
+
+.header .inner_c .nav ul li.last{
+    border-right: solid 1px #252947;
+}
+
+/*当前选中的条目*/
+.header .inner_c .nav ul li a.current{
+    color: white;
+    background-color: #252947;
+}
+
+.header .inner_c .nav ul li a{
+    display: block;
+    text-decoration: none;
+    font-size: 14px;
+    color: #818496;
+}
+
+.header .inner_c .nav ul li a:hover{
+    color: white;
+    background-color: #252947;
+}
+
+/*承载"加入我们"按钮的盒子*/
+.header .inner_c .jrwm-box{
+    float: left;
+    padding-top: 12px;
+    padding-left: 48px;
+}
+
+.banner{
+    height: 463px;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+/*用于添加小圆点*/
+.banner .circle{
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    margin-left: -60px;
+    width: 120px;
+    height: 12px;
+}
+
+.banner .circle ul{
+    list-style: none;
+}
+
+/*添加小圆点*/
+.banner .circle ul li{
+    width: 12px;
+    height: 12px;
+    background: url("../images/dian1.png") no-repeat;
+    float: left;
+
+    /*此次使用margin和padding都行*/
+    /*margin-right: 15px;*/
+    padding-right: 15px;
+    cursor: pointer;
+}
+
+/*去掉最后一个小圆点的margin-right，使得5个小圆点都在一条直线上*/
+.circle ul li.last{
+    /*margin-right: 0px;*/
+    padding-right: 0px;
+}
+
+/*当前选中的小圆点*/
+.banner .circle ul li.current{
+    background: url("../images/dian2.png") no-repeat;
+}
+
+
+/*在内容区中添加山峰*/
+.content{
+    width: 100%;
+    background: url("../images/indexmainbg.jpg") no-repeat center bottom;
+}
+/*产品*/
+.content .product{
+    height: 229px;
+    border-bottom: solid #DBE1E7 1px;
+    position: relative;
+}
+
+.content .product ul{
+    list-style: none;
+}
+
+.content .product ul li{
+    float: left;
+    margin-right: 43px;
+}
+
+.content .product ul li.last{
+    margin-right: 0px;
+}
+
+/*产品图片*/
+.content .product ul li .product-image img{
+    width: 218px;
+    height: auto;
+}
+
+/*最后一张产品图片*/
+.content .product ul li.last .product-image img{
+    width: 217px;
+    height: auto;
+}
+
+/*产品标题*/
+.content .product ul li .product-name{
+    line-height: 40px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/*点击播放按钮*/
+.content .product ul li .play{
+    text-align: center;
+}
+
+.content .product ul li .play a{
+    text-decoration: none;
+    font-size: 12px;
+    color: #38B774;
+    background: url("../images/sanjiaoxing.png") no-repeat right 5px;
+    padding-right: 10px;
+}
+
+/*用于添加小圆点*/
+.product .circle{
+    width: 117px;
+    height: 12px;
+    background-color: white;
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    margin-right: -59px;
+}
+
+.product .circle ul{
+    list-style: none;
+    padding-left: 14px;
+}
+
+.product .circle ul li{
+    float: left;
+    width: 12px;
+    height: 12px;
+    margin-right: 14px;
+    background: url("../images/dian1.png") no-repeat;
+    cursor: pointer;
+}
+
+.product .circle ul li.current{
+    background: url("../images/dian2.png") no-repeat;
+}
+
+/*信息展示*/
+.info{
+    margin-top: 54px;
+}
+
+/*博雅新闻*/
+.info .boyaanews{
+    float: left;
+    width: 500px;
+    background: url("../images/bynewsbg.jpg") no-repeat;
+    position: relative;
+}
+
+/*显示博雅新闻的ul标签*/
+.info .boyaanews ul{
+    list-style: none;
+    padding-top: 118px;
+    padding-left: 20px;
+}
+
+.info .boyaanews ul li{
+    line-height: 47px;
+    width: 460px;
+    border-bottom: solid #DBE1E7 1px;
+}
+
+/*展示博雅新闻的日期*/
+.info .boyaanews ul li span{
+    font-size: 12px;
+    color: #C0BED2;
+}
+
+/*展示博雅新闻的标题*/
+.info .boyaanews ul li a{
+    font-size: 13px;
+    text-decoration: none;
+    color: #444866;
+    padding-left: 20px;
+}
+
+.info .boyaanews ul li a:hover{
+    color: darkorange;
+}
+
+/*更多新闻按钮*/
+.morenews{
+    position: absolute;
+    top: 39px;
+    left: 218px;
+}
+
+/*博雅招聘*/
+.info .boyaajobs{
+    float: right;
+    width: 500px;
+    height: 310px;
+    background: url("../images/byhrbg3.jpg") no-repeat;
+    position: relative;
+}
+
+/*博雅招聘的标题*/
+.info .boyaajobs .title{
+    padding-left: 80px;
+    padding-top: 41px;
+
+    /*用于解决div标签嵌套img标签时，在img标签底部会产生空隙*/
+    font-size: 0px;
+}
+
+/*更多职位按钮*/
+.info .boyaajobs .morejobs{
+    position: absolute;
+    left: 218px;
+    top: 40px;
+}
+
+/*专场招聘*/
+.info .boyaajobs h3{
+    padding-top: 24px;
+    padding-left: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #FFF5CD;
+}
+
+.info .boyaajobs ul{
+    list-style: none;
+    padding-left: 20px;
+}
+
+.info .boyaajobs ul li{
+    width: 305px;
+    line-height: 40px;
+    border-bottom: solid #6FDEA3 1px;
+}
+
+.info .boyaajobs ul li a{
+    text-decoration: none;
+    font-size: 14px;
+    color: #F2EFDD;
+}
+
+.info .boyaajobs ul li a:hover{
+    background-color: darkorange;
+}
+
+/*脚部*/
+.footer{
+    width: 100%;
+    height: 91px;
+    margin-top: 53px;
+    background-color: #191D3A;
+    overflow: hidden;
+}
+
+/*版权信息*/
+.footer .copyright{
+    float:right;
+    color: #6C6E7E;
+    font-size: 12px;
+}
+
+/*政府图标*/
+.footer .copyright img{
+    position: relative;
+    top: 25px;
+}
+.footer .copyright a{
+    text-decoration: none;
+    color: #6C6E7E;
+}
+
+.footer .copyright a:hover{
+    color: white;
+}
+
+/*网站地图和免责声明*/
+.footer .fl{
+    float: left;
+    color: #6C6E7E;
+    font-size: 12px;
+    padding-top: 10px;
+}
+
+.footer .fl a{
+    color: #6C6E7E;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.footer .fl a:hover{
+    color: white;
+}
+
+/*回到顶部按钮*/
+.top a{
+    display: block;
+    width: 68px;
+    height: 29px;
+    background: url("../images/top.png") no-repeat 0px -40px;
+    position: fixed;
+    bottom: 75px;
+    right: 15px;
+}
+
+.top a:hover{
+    background: url("../images/top.png") no-repeat 0px 0px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
