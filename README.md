@@ -63,7 +63,7 @@ lessc common.less > ../css/common.css
 lessc index.less > ../css/index.css
 ```
 最后打开css文件夹，可以看到reset.less编译成了reset.css、common.less编译成了common.css、index.less编译成了index.css
-![](index.png)
+![](project.png)
 
 
 
