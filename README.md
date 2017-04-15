@@ -14,7 +14,7 @@
 **博雅互动首页(js版)** 
 [https://meishadevs.github.io/boyaa/博雅互动首页(js版)/index.html](https://meishadevs.github.io/boyaa/博雅互动首页(js版)/index.html)
 
-**博雅互动首页(jQuery版)**  
+**博雅互动首页(jQuery版)**
 [https://meishadevs.github.io/boyaa/博雅互动首页(jQuery版)/index.html](https://meishadevs.github.io/boyaa/博雅互动首页(jQuery版)/index.html)
 
 ## 使用Less版的博雅互动首页
