@@ -20,12 +20,10 @@
 ## 使用Less版的博雅互动首页
 
 **1. 将博雅首页项目clone到本地**  
-在命令行中执行`git clone https://github.com/meishaxiaozi/boyaa.git`命令将博雅首页项目clone到本地  
+`git clone https://github.com/meishaxiaozi/boyaa.git`
 
 **2. 安装Less编译插件**  
-```
-npm install -g less
-```
+`npm install -g less`
 
 **3. Less版博雅互动首页的目录结构**  
 进入博雅互动(Less版)文件夹，可以看到Less版的博雅互动首页的目录结构如下
