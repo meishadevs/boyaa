@@ -65,7 +65,7 @@ lessc common.less > ../css/common.css
 ```
 lessc index.less > ../css/index.css
 ```
-最后打开css文件夹，可以看到reset.less编译成了reset.css、common.less编译成了common.css、index.less编译成了index.css
+最后打开css文件夹，可以看到reset.less编译成了reset.css、common.less编译成了common.css、index.less编译成了index.css  
 ![](project.png)
 
 ## 使用Gulp将博雅互动首页的Less文件编译成CSS文件
@@ -112,5 +112,5 @@ gulp.task('less', function() {
 gulp less
 ```
 
-**7.打开css文件夹可以看到，在css文件夹下生成了三个CSS文件，表示成功的实现了使用Gulp将Less编译成CSS**
+**7.打开css文件夹可以看到，在css文件夹下生成了三个CSS文件，表示成功的实现了使用Gulp将Less编译成CSS**  
 ![](project.png)
