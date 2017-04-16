@@ -65,8 +65,8 @@ lessc common.less > ../css/common.css
 ```
 lessc index.less > ../css/index.css
 ```
-最后打开css文件夹，可以看到reset.less编译成了reset.css、common.less编译成了common.css、index.less编译成了index.css  
-![](http://meishadevs.com/boyaa/project.png)
+最后打开css文件夹，可以看到reset.less编译成了reset.css、common.less编译成了common.css、index.less编译成了index.css 
+![这里写图片描述](http://img.blog.csdn.net/20170416223447496)
 
 ## 使用Gulp将博雅互动首页的Less文件编译成CSS文件
 这个项目中有3个Less文件需要编译成CSS文件，使用前面方法需要执行3次Less编译命令才能将3个Less文件编译成CSS文件，这里将介绍使用前端自动化工具Gulp将Less文件编译成CSS文件，只需要执行一次Less编译命令，可以提高开发效率  
@@ -113,4 +113,4 @@ gulp less
 ```
 
 **7.打开css文件夹可以看到，在css文件夹下生成了三个CSS文件，表示成功的实现了使用Gulp将Less编译成CSS**  
-![](http://meishadevs.com/boyaa/project.png)
+![这里写图片描述](http://img.blog.csdn.net/20170416223447496)
