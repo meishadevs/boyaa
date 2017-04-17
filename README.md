@@ -1,5 +1,5 @@
 # 博雅互动首页
-**以循序渐进的方式实现博雅互动首页效果，通过这个项目可以将很好的练习HTML、CSS、JavaScript、jQuery和Less的使用**  
+> 以循序渐进的方式实现博雅互动首页效果，通过这个项目可以将很好的练习HTML、CSS、JavaScript、jQuery和Less的使用
 
 ## 网站描述
 **1. 博雅互动首页：** 只用HTML和CSS实现了博雅互动首页的布局  
