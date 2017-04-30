@@ -1,0 +1,110 @@
+@charset "UTF-8";
+
+/* 产品列表 s */
+.product-list {
+  width: 1000px;
+  height: 230px;
+  margin: 0 auto;
+  margin-bottom: 53px;
+  border-bottom: solid 1px #DBE1E7;
+  position: relative;
+
+  .slider {
+    width: 100%;
+    height: 191px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .slider-main {
+    width: 2000px;
+    height: 191px;
+
+    .last {
+      width: 217px;
+      margin-right: 0;
+    }
+  }
+
+  .slider-main-product {
+    width: 218px;
+    margin-right: 43px;
+    float: left;
+
+    &:hover {
+      background-color: #38B774;
+    }
+
+    .title {
+      p {
+        line-height: 29px;
+        text-align: center;
+      }
+    }
+  }
+
+  .circle {
+    padding: 0 15px 0 15px;
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    margin-left: -61px;
+    background-color: #fff;
+
+    li {
+      width: 12px;
+      height: 12px;
+      margin-right: 15px;
+      background-color: #B5C0CB;
+      border-radius: 50%;
+      text-indent: -10em;
+      overflow: hidden;
+      float: left;
+      cursor: pointer;
+
+      &.last {
+        margin-right: 0;
+      }
+
+      &.on {
+        background-color: #2FBC71;
+      }
+    }
+  }
+}
+
+.slider-main-img {
+  width: 1000px;
+  height: 191px;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  img {
+    width: 218px;
+    height: auto;
+  }
+
+  .title {
+    width: 218px;
+    height: 63px;
+    display: block;
+
+    h5 {
+      line-height: 30px;
+      text-align: center;
+      font-size: 14px;
+      color: #444866;
+      font-family: "microsoft yahei";
+      font-weight: bold;
+    }
+
+    span {
+      padding-right: 10px;
+      color: #38B774;
+      background: url(../images/arrow.png) no-repeat;
+      background-position: center right;
+    }
+  }
+}
+/* 产品列表 e */

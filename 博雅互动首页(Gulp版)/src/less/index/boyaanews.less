@@ -1,0 +1,64 @@
+@charset "UTF-8";
+
+/* 博雅新闻 */
+.boyaanews {
+  width: 500px;
+  background: url(../images/bynewsbg.jpg) no-repeat;
+  float: left;
+  position: relative;
+
+  .more {
+    width: 58px;
+    height: 27px;
+    line-height: 27px;
+    padding-left: 8px;
+    border: solid 1px #33B972;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #33B972;
+    cursor: pointer;
+    position: absolute;
+    top: 40px;
+    left: 218px;
+
+    span {
+      line-height: 7px;
+      position: absolute;
+      left: 50px;
+      top: 7px;
+    }
+
+    &:hover {
+      color: #fff;
+      background-color: #33B972;
+    }
+  }
+}
+
+.news {
+  width: 460px;
+  margin: 117px 0 0 20px;
+
+  li {
+    height: 47px;
+    line-height: 47px;
+    border-bottom: solid 1px #DBE1E7;
+
+    span {
+      float: right;
+      font-size: 12px;
+      color: #AFBECF;
+    }
+
+    a {
+      float: left;
+      font-size: 14px;
+      color: #444866;
+      font-family: "microsoft yahei";
+
+      &:hover {
+        color: #33B972;
+      }
+    }
+  }
+}
