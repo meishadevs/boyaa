@@ -224,4 +224,4 @@
 
 **修改Less文件，自动编译的效果**  
 下面的gif动画展示的是修改header.less文件下的`background-color`属性，修改完保存后会自动将Less文件编译成CSS文件，并且会立即在网页中展示
-![这里写图片描述](http://oqdyj5870.bkt.clouddn.com/test.gif)
+![这里写图片描述](http://oqdyj5870.bkt.clouddn.com/show.gif)
