@@ -1,5 +1,5 @@
 # 博雅互动首页
-> 以循序渐进的方式实现博雅互动首页效果，通过这个项目可以将很好的练习HTML、CSS、JavaScript、jQuery和Less的使用
+> 以循序渐进的方式实现博雅互动首页效果，通过这个项目可以将很好的练习HTML、CSS、JavaScript、jQuery、Less以及Gulp的使用
 
 ## 网站描述
 **1. 博雅互动首页：** 只用HTML和CSS实现了博雅互动首页的布局  
@@ -131,6 +131,10 @@
 
 在命令行中执行`gulp deafaultTask`命令后会做Less文件的编译、CSS文件的压缩、HTML文件的压缩等操作，并且会自动创建一个dist文件夹，用于保存编译后生成的网页文件
 
+	gulp default
+	
+在命令行中执行`gulp default`命令后会做Less文件的编译、CSS文件的压缩、HTML文件的压缩等操作，并且会自动创建一个dist文件夹，用于保存编译后生成的网页文件
+
 **5.在命令行中执行下面的命令实现自动化编译**
 
 	gulp server
@@ -139,4 +143,4 @@
 
 **修改Less文件，自动编译的效果**  
 下面的gif动画展示的是修改header.less文件下的`background-color`属性，修改完保存后会自动将Less文件编译成CSS文件，并且会立即在网页中展示
-![这里写图片描述](http://img.blog.csdn.net/20170430102950182)
+![这里写图片描述](http://oqdyj5870.bkt.clouddn.com/show.gif)
