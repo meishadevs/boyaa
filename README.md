@@ -5,7 +5,8 @@
 **1. 博雅互动首页：** 只用HTML和CSS实现了博雅互动首页的布局  
 **2. 博雅互动首页(js版)：** 在完成了网页布局的基础上使用原生js实现了导航菜单切换、图片轮播、回到顶部等效果  
 **3. 博雅互动首页(jQuery版)：** 在完成了网页布局的基础上使用jQuery实现了导航菜单切换、图片轮播、回到顶部等效果  
-**4.博雅互动首页(Less版)：** 使用Less重写了一遍博雅互动首页的CSS样式
+**4.博雅互动首页(Less版)：** 使用Less重写了一遍博雅互动首页的CSS样式  
+**5.博雅互动首页(Gulp版)：**使用 Gulp 构建一个自动化环境，实现监听、预编译、合并、压缩等操作
 
 ## **网站地址**
 **博雅互动首页**
@@ -38,7 +39,7 @@
 	  ├─  favicon.ico ················ 网站的图标
 	  └─  index.html ················· 网站的入口文件
 
-**4. 进入less文件夹中**
+**4. 进入less文件夹中**  
 进入less文件夹下，可以看到less文件夹结构
 
     ├───  less/······················· less文件夹
@@ -117,108 +118,24 @@
 	├───  博雅互动首页(Gulp版)/········· 网站所在目录
 	└─┬─  src/ ······················· 存放网站原文件
 	  ├─  .gitignore ················· 提交到Git上时忽略提交的文件
+	  ├─  gulpfile.js ................ Gulp编译脚本
 	  └─  package.json ··············· 文件中记录了当前项目的信息
 
 **3.安装项目所需的插件**
 
 	npm install
 
-**4.创建一个gulpfile.js文件，并且向gulpfile.js中添加下面的代码**
+**4.编译src下的文件**
 
-	//导包
-	var gulp = require('gulp');
-	var less = require('gulp-less');
-	var cssnano = require('gulp-cssnano');
-	var concat = require('gulp-concat');
-	var uglify = require('gulp-uglify');
-	var htmlmin = require('gulp-htmlmin');
-	var browserSync = require('browser-sync');
-	
-	//Less编译、CSS压缩
-	gulp.task('style', function() {
-	  gulp.src('src/less/*.less')
-	    .pipe(less())
-	    .pipe(cssnano())
-	    .pipe(gulp.dest('dist/css'))
-	    .pipe(browserSync.reload({
-	      stream: true
-	    }));
-	});
-	
-	
-	//JS压缩
-	gulp.task('script', function() {
-	  gulp.src('src/js/*.js')
-	    .pipe(uglify())
-	    .pipe(gulp.dest('dist/js'))
-	    .pipe(browserSync.reload({
-	      stream: true
-	    }));
-	});
-	
-	
-	//图片复制
-	gulp.task('image', function() {
-	  gulp.src('src/images/*.*')
-	    .pipe(gulp.dest('dist/images'))
-	    .pipe(browserSync.reload({
-	      stream: true
-	    }));
-	});
-	
-	
-	//icon复制
-	gulp.task('icon', function () {
-	  gulp.src('src/*.ico')
-	      .pipe(gulp.dest('dist'))
-	      .pipe(browserSync.reload({
-	          stream: true
-	      }));
-	});
-	
-	
-	//html压缩
-	gulp.task('html', function() {
-	  gulp.src('src/*.html')
-	    .pipe(htmlmin({
-	      collapseWhitespace: true,
-	      removeComments: true
-	    }))
-	    .pipe(gulp.dest('dist'))
-	    .pipe(browserSync.reload({
-	      stream: true
-	    }));
-	});
-	
-	
-	gulp.task('serve', function() {
-	  browserSync({
-	    server: {
-	      baseDir: ['dist']
-	    },
-	  }, function(err, bs) {
-	    console.log(bs.options.getIn(["urls", "local"]));
-	  });
-	
-	  gulp.watch(['src/less/*.less', 'src/less/common/*.less', 'src/less/index/*.less'], ['style']);
-	  gulp.watch('src/js/*.js',['script']);
-	  gulp.watch('src/images/*.*',['image']);
-	    gulp.watch('src/*.ico',['icon']);
-	  gulp.watch('src/*.html',['html']);
-	});
-	
-	gulp.task('default', ['style', 'script', 'image', 'icon', 'html']);
+	gulp deafultTask
 
-**5.编译src下的文件**
+在命令行中执行`gulp deafaultTask`命令后会做Less文件的编译、CSS文件的压缩、HTML文件的压缩等操作，并且会自动创建一个dist文件夹，用于保存编译后生成的网页文件
 
-	gulp deafult
-在命令行中执行`gulp deafault`命令后会做Less文件的编译、CSS文件的压缩、HTML文件的压缩等操作，并且会自动创建一个dist文件夹，用于保存编译后生成的网页文件
+**5.在命令行中执行下面的命令实现自动化编译**
 
-**6.在命令行中执行下面的命令实现自动化编译**
+	gulp server
 
-	gulp serve
-
-在命令行中执行完`gulp serve`命令后，会使用默认浏览器打开当前网页，此时修改src文件夹下的文件，只要一保存，文件就会被编译，并且将编译生成的文件存放在dist文件夹下
+在命令行中执行完`gulp server`命令后，会使用默认浏览器打开当前网页，此时修改src文件夹下的文件，只要一保存，文件就会被编译，并且将编译生成的文件存放在dist文件夹下
 
 **修改Less文件，自动编译的效果**  
 下面的gif动画展示的是修改header.less文件下的`background-color`属性，修改完保存后会自动将Less文件编译成CSS文件，并且会立即在网页中展示

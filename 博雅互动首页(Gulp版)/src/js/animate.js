@@ -84,6 +84,7 @@ function animate(obj, json, time, callback)
     }, time);
 }
 
+
 /**
  * 获得对象中属性的值
  * @param obj 对象

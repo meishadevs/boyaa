@@ -1,35 +1,35 @@
-//·â×°µÄÒ»Ğ©³£ÓÃµÄº¯Êı
+//å°è£…çš„ä¸€äº›å¸¸ç”¨çš„å‡½æ•°
 var Util = {
 
     /**
-     * ²éÕÒÍøÒ³ÖĞÀàÃûÎªclassNameµÄ±êÇ©
-     * @param className ÀàÃû
-     * @returns {*} ÀàÃûÎªclassNameµÄ±êÇ©
+     * æŸ¥æ‰¾ç½‘é¡µä¸­ç±»åä¸ºclassNameçš„æ ‡ç­¾
+     * @param className ç±»å
+     * @returns {*} ç±»åä¸ºclassNameçš„æ ‡ç­¾
      */
     getByClass:function(className)
     {
-        //Èç¹ûä¯ÀÀÆ÷Ö§³Ödocument.getElementsByClassName
+        //å¦‚æœæµè§ˆå™¨æ”¯æŒdocument.getElementsByClassName
         if(document.getElementsByClassName)
         {
-            //Ö±½ÓÊ¹ÓÃdocument.getElementsByClassName
+            //ç›´æ¥ä½¿ç”¨document.getElementsByClassName
             return document.getElementsByClassName(className);
         }
 
         var array = [];
 
-        //»ñµÃÍøÒ³ÖĞ½ÚµãµÄ¸öÊı
+        //è·å¾—ç½‘é¡µä¸­èŠ‚ç‚¹çš„ä¸ªæ•°
         var dom = document.getElementsByTagName("*");
 
-        //±éÀúÍøÒ³ÖĞµÄ½Úµã
+        //éå†ç½‘é¡µä¸­çš„èŠ‚ç‚¹
         for(var i = 0; i < dom.length; i++)
         {
-            //½«½ÚµãµÄÀàÃû±£´æÔÚtxtArrÊı×éÖĞ
+            //å°†èŠ‚ç‚¹çš„ç±»åä¿å­˜åœ¨txtArræ•°ç»„ä¸­
             var txtArr = dom[i].className.split(" ");
 
-            //±éÀútxtArrÊı×é
+            //éå†txtArræ•°ç»„
             for(var j = 0; j < txtArr.length; j++)
             {
-                //Èç¹ûtxtArrÊı×éÖĞ´æÔÚclassName
+                //å¦‚æœtxtArræ•°ç»„ä¸­å­˜åœ¨className
                 if(txtArr[j] == className)
                 {
                     array.push(dom[i]);
@@ -39,25 +39,25 @@ var Util = {
         return array;
     },
 
-    //»ñµÃÓë´°¿Ú»¬¶¯Ïà¹ØµÄĞÅÏ¢
+    //è·å¾—ä¸çª—å£æ»‘åŠ¨ç›¸å…³çš„ä¿¡æ¯
     scroll:function()
     {
-        if(window.pageYOffset != null)  //  ie9+ ºÍÆäËûä¯ÀÀÆ÷
+        if(window.pageYOffset != null)  //  ie9+ å’Œå…¶ä»–æµè§ˆå™¨
         {
             return {
                 left: window.pageXOffset,
                 top: window.pageYOffset
             }
         }
-        else if(document.compatMode == "CSS1Compat")  // ÉùÃ÷µÄÁË DTD
-        // ¼ì²âÊÇ²»ÊÇ¹ÖÒìÄ£Ê½µÄä¯ÀÀÆ÷ -- ¾ÍÊÇÃ»ÓĞ ÉùÃ÷<!DOCTYPE html>
+        else if(document.compatMode == "CSS1Compat")  // å£°æ˜çš„äº† DTD
+        // æ£€æµ‹æ˜¯ä¸æ˜¯æ€ªå¼‚æ¨¡å¼çš„æµè§ˆå™¨ -- å°±æ˜¯æ²¡æœ‰ å£°æ˜<!DOCTYPE html>
         {
             return {
                 left: document.documentElement.scrollLeft,
                 top: document.documentElement.scrollTop
             }
         }
-        return { //  Ê£ÏÂµÄ¿Ï¶¨ÊÇ¹ÖÒìÄ£Ê½µÄ
+        return { //  å‰©ä¸‹çš„è‚¯å®šæ˜¯æ€ªå¼‚æ¨¡å¼çš„
             left: document.body.scrollLeft,
             top: document.body.scrollTop
         }

@@ -8,10 +8,11 @@ var uglify = require('gulp-uglify');
 var htmlmin = require('gulp-htmlmin');
 var browserSync = require('browser-sync');
 
-//Less编译、CSS压缩
-gulp.task('style', function() {
+//Less编译、CSS合并、CSS压缩
+gulp.task('cssTask', function() {
   gulp.src('src/less/*.less')
     .pipe(less())
+    .pipe(concat('index.min.css'))
     .pipe(cssnano())
     .pipe(gulp.dest('dist/css'))
     .pipe(browserSync.reload({
@@ -20,9 +21,10 @@ gulp.task('style', function() {
 });
 
 
-//JS压缩
-gulp.task('script', function() {
+//JS合并、JS压缩
+gulp.task('jsTask', function() {
   gulp.src('src/js/*.js')
+    .pipe(concat('index.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest('dist/js'))
     .pipe(browserSync.reload({
@@ -32,7 +34,7 @@ gulp.task('script', function() {
 
 
 //图片复制
-gulp.task('image', function() {
+gulp.task('imageTask', function() {
   gulp.src('src/images/*.*')
     .pipe(gulp.dest('dist/images'))
     .pipe(browserSync.reload({
@@ -42,7 +44,7 @@ gulp.task('image', function() {
 
 
 //icon复制
-gulp.task('icon', function () {
+gulp.task('iconTask', function () {
   gulp.src('src/*.ico')
       .pipe(gulp.dest('dist'))
       .pipe(browserSync.reload({
@@ -52,7 +54,7 @@ gulp.task('icon', function () {
 
 
 //html压缩
-gulp.task('html', function() {
+gulp.task('htmlTask', function() {
   gulp.src('src/*.html')
     .pipe(htmlmin({
       collapseWhitespace: true,
@@ -65,7 +67,7 @@ gulp.task('html', function() {
 });
 
 
-gulp.task('serve', function() {
+gulp.task('server', function() {
   browserSync({
     server: {
       baseDir: ['dist']
@@ -74,11 +76,11 @@ gulp.task('serve', function() {
     console.log(bs.options.getIn(["urls", "local"]));
   });
 
-  gulp.watch(['src/less/*.less', 'src/less/common/*.less', 'src/less/index/*.less'], ['style']);
-  gulp.watch('src/js/*.js',['script']);
-  gulp.watch('src/images/*.*',['image']);
-    gulp.watch('src/*.ico',['icon']);
-  gulp.watch('src/*.html',['html']);
+  gulp.watch(['src/less/*.less', 'src/less/common/*.less', 'src/less/index/*.less'], ['cssTask']);
+  gulp.watch('src/js/*.js',['jsTask']);
+  gulp.watch('src/images/*.*',['imageTask']);
+    gulp.watch('src/*.ico',['iconTask']);
+  gulp.watch('src/*.html',['htmlTask']);
 });
 
-gulp.task('default', ['style', 'script', 'image', 'icon', 'html']);
+gulp.task('defaultTask', ['cssTask', 'jsTask', 'imageTask', 'iconTask', 'htmlTask']);

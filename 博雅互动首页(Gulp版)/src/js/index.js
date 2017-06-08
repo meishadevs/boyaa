@@ -13,6 +13,7 @@ window.onload = function()
     gotoTop();
 }
 
+
 //处理顶部导航栏上的逻辑
 function setNav()
 {
@@ -33,6 +34,7 @@ function setNav()
         }
     }
 }
+
 
 function setBanner()
 {
@@ -138,6 +140,7 @@ function setBanner()
     }
 }
 
+
 //处理 轮播图上的逻辑
 function setSlider()
 {
@@ -235,7 +238,7 @@ function setSlider()
     var timer = null;
 
     //创建定时器,用于自动播放轮播图
-    timer = setInterval(autoPlay, 4000);
+    //timer = setInterval(autoPlay, 4000);
 
     //当鼠标放在轮播图上
     w_slider.onmouseover = function()
@@ -273,6 +276,8 @@ function setSlider()
     }
 }
 
+
+//回到顶部
 function gotoTop()
 {
     var goTop = $("goTop");
@@ -310,6 +315,7 @@ function gotoTop()
     }
 }
 
+
 /**
  * 选中了小圆点
  * @param array 保存小圆点的数组
@@ -330,6 +336,7 @@ function setCircle(array, index)
     }
 }
 
+
 //清除类名
 function clearClassName(array)
 {
@@ -339,6 +346,7 @@ function clearClassName(array)
     }
 }
 
+
 //设置类
 function setArrayClass(array, className)
 {
@@ -347,6 +355,7 @@ function setArrayClass(array, className)
         array[i].className = className;
     }
 }
+
 
 function $(id)
 {
