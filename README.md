@@ -1,35 +1,28 @@
 # 博雅互动首页
-> 以循序渐进的方式实现博雅互动首页效果，通过这个项目可以将很好的练习HTML、CSS、JavaScript、jQuery、Less以及Gulp的使用
+> 以循序渐进的方式实现博雅互动首页效果，通过这个项目可以将很好的练习 HTML、CSS、JavaScript、jQuery、Less 以及 Gulp 的使用
 
 ## 网站描述
-**1. 博雅互动首页：** 只用HTML和CSS实现了博雅互动首页的布局  
-**2. 博雅互动首页(js版)：** 在完成了网页布局的基础上使用原生js实现了导航菜单切换、图片轮播、回到顶部等效果  
-**3. 博雅互动首页(jQuery版)：** 在完成了网页布局的基础上使用jQuery实现了导航菜单切换、图片轮播、回到顶部等效果  
-**4.博雅互动首页(Less版)：** 使用Less重写了一遍博雅互动首页的CSS样式  
+**1. 博雅互动首页：** 只用 HTML 和 CSS 实现了博雅互动首页的布局  
+**2. 博雅互动首页(js版)：** 在完成了网页布局的基础上使用原生 js   实现了导航菜单切换、图片轮播、回到顶部等效果  
+**3. 博雅互动首页(jQuery版)：** 在完成了网页布局的基础上使用 jQuery 实现了导航菜单切换、图片轮播、回到顶部等效果  
+**4.博雅互动首页(Less版)：** 使用 Less 重写了一遍博雅互动首页的 CSS 样式  
 **5.博雅互动首页(Gulp版)：**使用 Gulp 构建一个自动化环境，实现监听、预编译、合并、压缩等操作
 
 ## **网站地址**
-**博雅互动首页**
-[https://meishadevs.github.io/boyaa/博雅互动首页/index.html](https://meishadevs.github.io/boyaa/博雅互动首页/index.html)
-
-**博雅互动首页(js版)** 
-[https://meishadevs.github.io/boyaa/博雅互动首页(js版)/index.html](https://meishadevs.github.io/boyaa/博雅互动首页(js版)/index.html)
-
-**博雅互动首页(jQuery版)**
-[https://meishadevs.github.io/boyaa/博雅互动首页(jQuery版)/index.html](https://meishadevs.github.io/boyaa/博雅互动首页(jQuery版)/index.html)
+**博雅互动首页：**[http://meishadevs.com/boyaa/](http://meishadevs.com/boyaa/)
 
 ## 使用Less版的博雅互动首页
 
-**1. 将博雅首页项目clone到本地**  
+**1. 将博雅首页项目 clone 到本地**  
 
 	git clone https://github.com/meishaxiaozi/boyaa.git
 
-**2. 安装Less编译插件**  
+**2. 安装 Less 编译插件**  
 
 	npm install -g less
 
-**3. Less版博雅互动首页的目录结构**  
-进入博雅互动(Less版)文件夹，可以看到Less版的博雅互动首页的目录结构如下
+**3. Less 版博雅互动首页的目录结构**  
+进入博雅互动首页(Less版)文件夹，可以看到 Less 版的博雅互动首页的目录结构如下
 
 	├───  博雅互动首页(Less版)/········· 网站所在目录
 	└─┬─  css/ ······················· 存放网站的CSS文件
