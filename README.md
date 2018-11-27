@@ -15,7 +15,7 @@
 
 **1. 将博雅首页项目 clone 到本地**  
 
-	git clone https://github.com/meishaxiaozi/boyaa.git
+	git clone https://github.com//boyaa.git
 
 **2. 安装 Less 编译插件**  
 
