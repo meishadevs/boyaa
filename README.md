@@ -9,13 +9,13 @@
 **5.博雅互动首页(Gulp版)：** 使用 Gulp 构建一个自动化环境，实现监听、预编译、合并、压缩等操作
 
 ## **网站地址**
-**博雅互动首页：**[http://meishadevs.com/boyaa/](http://meishadevs.com/boyaa/)
+**博雅互动首页：**[https://meishadevs.github.io/boyaa/](https://meishadevs.github.io/boyaa/)
 
 ## 使用Less版的博雅互动首页
 
 **1. 将博雅首页项目 clone 到本地**  
 
-	git clone https://github.com//boyaa.git
+	git clone https://github.com/meishadevs/boyaa.git
 
 **2. 安装 Less 编译插件**  
 
@@ -136,4 +136,4 @@
 
 **修改Less文件，自动编译的效果**  
 下面的gif动画展示的是修改header.less文件下的`background-color`属性，修改完保存后会自动将Less文件编译成CSS文件，并且会立即在网页中展示
-![](http://meishadevs.com/boyaa/images/show.gif)
+![](https://meishadevs.github.io/boyaa/images/show.gif)
