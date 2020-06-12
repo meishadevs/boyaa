@@ -9,7 +9,7 @@
 **5.博雅互动首页(Gulp版)：** 使用 Gulp 构建一个自动化环境，实现监听、预编译、合并、压缩等操作
 
 ## **网站地址**
-**博雅互动首页：**[https://meishadevs.github.io/boyaa/](https://meishadevs.github.io/boyaa/)
+**博雅互动首页：**[https://meishadevs.github.io/boyaa](https://meishadevs.github.io/boyaa)
 
 ## 使用Less版的博雅互动首页
 
